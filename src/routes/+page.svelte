@@ -1,7 +1,23 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    import Spotify from '../nested/spotify_API/spotify.svelte' 
+    import SpotifyLogin from '../nested/spotify_login/spotify_login.svelte' 
 
-<p>crazy funguje</p>
+    //var isDev = process.env.NODE_ENV == 'development'
+
+    
+
+
+</script>
+
+<h1>ToDo things</h1>
+
+
+<Spotify/>
+
+<p>login</p>
+<SpotifyLogin/>
+
+
 
 
 
