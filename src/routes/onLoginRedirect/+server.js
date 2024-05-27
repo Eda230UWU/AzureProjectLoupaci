@@ -7,8 +7,8 @@ export async function GET({url}){
 
     var resp = await getTempAccessToken(code)
     
-    console.log(resp)
-    return json({body: resp})
+    //console.log(resp)
+    return json({body: JSON.parse(resp)})
 }
 
 async function getTempAccessToken(code) {
