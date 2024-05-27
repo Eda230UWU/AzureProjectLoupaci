@@ -1,7 +1,7 @@
 <script>
     async function redirect() {
         const url = new URL(location.toString()).searchParams
-        console.log(url.get("code"))
+        //console.log(url.get("code"))
         localStorage.setItem("spotifyCode", url.get("code"))
 
         //getTempAccessToken(localStorage.getItem("spotifyCode"))
@@ -12,17 +12,26 @@
         var data = await resp.text()
         var data = JSON.parse(data)
         var data = data.body
-        console.log(data)
+        //console.log(data)
         
-        userData()
+        
+        var code = await userData(data)
+        console.log(code)
         //location.href = "/"
         
     }
 
     
 
-    async function userData(){
-        console.log('data xd')
+    async function userData(data){
+
+        var time = new Date().getTime()
+        
+        localStorage.setItem("authToken", JSON.stringify(data))
+        localStorage.setItem("authTokenExpiration", JSON.parse(localStorage.getItem("authToken")).expires_in + time)
+        
+        
+        return "success"
     }
 </script>
 
