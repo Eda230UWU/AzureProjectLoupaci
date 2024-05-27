@@ -2,11 +2,13 @@ import { json } from "@sveltejs/kit"
 
 export async function GET({url}){
     
-    var code = url.searchParams.get('code');
+    let code = new String(url.searchParams.get('code'))
+    code = code.substring(0, code.length - 1)
+    
     var resp = await getTempAccessToken(code)
     
-    ///console.log(JSON.stringify(resp))
-    return json({data: JSON.stringify(resp)})
+    console.log(code)
+    return json({data: resp})
 }
 
 async function getTempAccessToken(code) {
