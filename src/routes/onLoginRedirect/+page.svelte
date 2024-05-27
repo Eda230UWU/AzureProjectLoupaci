@@ -8,7 +8,7 @@
         var resp = await fetch(`/onLoginRedirect?code=${url.get("code")}}`, {
             method: "GET"            
         })
-        console.log(JSON.stringify(resp))
+        console.log(resp)
         userData()
         //location.href = "/"
         
