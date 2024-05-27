@@ -10,7 +10,6 @@
 </script>
 
 <h1>ToDo things</h1>
-<h2>hello</h2>
 
 
 <Spotify/>
