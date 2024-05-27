@@ -1,11 +1,24 @@
 <script>
-    function redirect() {
+    async function redirect() {
         const url = new URL(location.toString()).searchParams
         console.log(url.get("code"))
         localStorage.setItem("spotifyCode", url.get("code"))
-        location.href = "/"
+
+        //getTempAccessToken(localStorage.getItem("spotifyCode"))
+        var resp = await fetch(`/onLoginRedirect?code=${url.get("code")}}`, {
+            method: "GET"            
+        })
+        console.log(JSON.stringify(resp))
+        userData()
+        //location.href = "/"
+        
     }
 
+    
+
+    async function userData(){
+        console.log('data xd')
+    }
 </script>
 
 

@@ -1,6 +1,6 @@
 <script>
-    import Spotify from '../nested/spotify_API/spotify.svelte' 
-    import SpotifyLogin from '../nested/spotify_login/spotify_login.svelte' 
+    import Spotify from '../nested/spotifyPlayer/spotify.svelte' 
+    import SpotifyLogin from '../nested/spotifyLogin/spotify_login.svelte' 
 
     //var isDev = process.env.NODE_ENV == 'development'
 
