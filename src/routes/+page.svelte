@@ -1,7 +1,7 @@
 <script>
     import Spotify from '../nested/spotifyPlayer/spotify.svelte' 
     import SpotifyLogin from '../nested/spotifyLogin/spotify_login.svelte' 
-
+    import Sidebar from "../nested/Sidebar/sidebar.svelte"
     //var isDev = process.env.NODE_ENV == 'development'
     //localStorage.setItem("spotifyScope")
     
@@ -11,7 +11,7 @@
 
 <h1>ToDo things</h1>
 
-
+<Sidebar/>
 <Spotify/>
 
 <p>login</p>
@@ -22,7 +22,6 @@
 
 
 <style lang="scss">
-
 
     
 </style>

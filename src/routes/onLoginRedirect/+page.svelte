@@ -17,7 +17,7 @@
         
         var code = await userData(data)
         console.log(code)
-        //location.href = "/"
+        location.href = "/"
         
     }
 
@@ -28,7 +28,7 @@
         var time = new Date().getTime()
         
         localStorage.setItem("authToken", JSON.stringify(data))
-        localStorage.setItem("authTokenExpiration", JSON.parse(localStorage.getItem("authToken")).expires_in + time)
+        localStorage.setItem("authTokenExpiration", (JSON.parse(localStorage.getItem("authToken")).expires_in * 1000) + time )
         
         
         return "success"
