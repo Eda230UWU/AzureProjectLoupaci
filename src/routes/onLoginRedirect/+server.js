@@ -21,7 +21,7 @@ async function getTempAccessToken(code) {
     var details = {
         "grant_type": "authorization_code",
         "code": code,
-        "redirect_uri": "http://localhost:5173/onLoginRedirect"
+        "redirect_uri": process.env.NODE_ENV == 'development' ? "http://localhost:5173/onLoginRedirect" : "https://loupaci-test-branch.azurewebsites.net/onLoginRedirect"
     }
 
     for (var property in details) {
