@@ -104,7 +104,7 @@
             else{
             var respBody = JSON.parse(await resp.text());
 
-            console.log(respBody);}
+            return respBody}
         } else {
             alert("bad request data");
         }
@@ -137,10 +137,12 @@
         }
     }
     async function stopStartPlayback(){
-        currentPlayback = getCurrentPlayback()
+        currentPlayback = await getCurrentPlayback()
+        console.log(currentPlayback)
         //if(currentPlayback) if not playing 
         if(currentPlayback.is_playing) {
             if (checkAuth()) {
+            console.log("stop")
             var apiUrl = "https://api.spotify.com/v1/me/player/pause"
             var resp = await fetch(apiUrl, {
                 method: "PUT",
@@ -153,26 +155,73 @@
         }
         else {
             if (checkAuth()) {
-            var apiUrl = "https://api.spotify.com/v1/me/player/pause"
+            var apiUrl = "https://api.spotify.com/v1/me/player/play"
+            var body = JSON.stringify({
+                    "position_ms": currentPlayback.progress_ms,
+                    "context_uri": currentPlayback.context.uri,
+                    //"uris": [currentPlayback.item.uri]
+                })
+            console.log("play")
             var resp = await fetch(apiUrl, {
                 method: "PUT",
                 headers: {
                     Authorization:
                         authToken.token_type + " " + authToken.access_token,
-                    },
-                });
-            }
+                }
+                //,body: body
+            })
+        }
+                
+            
+            
+            //console.log()
+            console.log(await resp.text())
 
         }
         
     }
-    async function startPlayback(uri){
+    async function startPlayback(songIndex){
+        var playlistIndex = localStorage.getItem("playlistIndex")
+        var apiUrl = "https://api.spotify.com/v1/me/playlists";
 
+        if (checkAuth()) {
+            var resp = await fetch(apiUrl, {
+                method: "GET",
+                headers: {
+                    Authorization:
+                        authToken.token_type + " " + authToken.access_token,
+                },
+            });
+
+            var respBody = JSON.parse(await resp.text());
+
+            console.log(respBody);
+        }
+
+        if (checkAuth()) {
+            var apiUrl = "https://api.spotify.com/v1/me/player/play"
+            var body = JSON.stringify({
+                    "offset": { "position": songIndex },
+                    "context_uri": respBody.items[playlistIndex].uri,
+                    //"uris": [currentPlayback.item.uri]
+                })
+            console.log("play songs")
+            var respa = await fetch(apiUrl, {
+                method: "PUT",
+                headers: {
+                    Authorization:
+                        authToken.token_type + " " + authToken.access_token,
+                },
+                body: body
+        })}
+
+        console.log(respa)
     } 
 
-    async function selectPlaylist(data) {
+    async function selectPlaylist(data, index) {
+        localStorage.setItem("playlistIndex", index)
         var playlist = data.tracks.href;
-
+        //console.log(data)
         if (checkAuth()) {
             var resp = await fetch(playlist, {
                 method: "GET",
@@ -223,8 +272,10 @@
                             <p>name xd</p>
                         </div>
                         <div class="songs">
-                            {#each selectedPlaylist.items as songs}
-                                <div class="song">
+                            {#each selectedPlaylist.items as songs, i}
+                                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                                <div class="song" on:click={()=>{startPlayback(i)}}>
                                     <p>
                                         {songs.track.name} by {#each songs.track.album.artists as artists, i}
                                             {artists.name}
@@ -240,13 +291,13 @@
                             <p>fetching your playlists</p>
                         {:then playlistData}
                             <a href={playlistData.href}>User link</a>
-                            {#each playlistData.items as data}
+                            {#each playlistData.items as data, index}
                                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                                 <div
                                     class="playlistContainer"
                                     on:click={() => {
-                                        selectPlaylist(data);
+                                        selectPlaylist(data, index);
                                     }}
                                 >
                                     <h2>{data.name}</h2>

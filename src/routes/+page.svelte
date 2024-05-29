@@ -9,19 +9,24 @@
 
 </script>
 
-<h1>ToDo things</h1>
 
-<Sidebar/>
-<Spotify/>
-
-<p>login</p>
-<SpotifyLogin/>
-
+<div class='flex'>
+    <Sidebar/>
+    <Spotify/>
+    
+    <div>
+        <p>login</p>
+        <SpotifyLogin/>
+    </div>
+</div>
 
 
 
 
 <style lang="scss">
+    div.flex {
+        display: flex;
 
+    }
     
 </style>
