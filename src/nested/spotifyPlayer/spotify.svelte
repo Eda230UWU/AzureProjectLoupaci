@@ -246,8 +246,21 @@
 </script>
 
 <div class="spotify">
-    <h1>Spotify API thingies</h1>
-    <img src="/spotifyLogo.png" alt="fortnite" />
+    <div class="flex">
+        <div class="buttons">
+            <!--from start play/pause skip + volume slider-->
+            <button on:click={() => {previousTrack()}}><p>&#171</p></button>
+            <button on:click={() => {stopStartPlayback()}}><p>&#9658</p></button>
+            <button on:click={() => {nextTrack()}}><p>&#187</p></button>
+            <div class="volume and playback">
+                
+            </div>
+        </div>
+        <div class="logo">
+        <i>Powered by:</i>
+        <img src="/spotifyLogo.png" alt="fortnite" />
+        </div>
+    </div>
     <div class="playlist">
         <div class="search">
             <!-- <input bind:value={spotifyQuery} placeholder="search for your playlist"/>
@@ -260,7 +273,7 @@
         </div>
         <div class="music">
             {#if alwaysFalse}
-                <h1>playlists</h1>
+                
                 <div class="playlists">
                     {#if playlistSelected}
                         <button
@@ -269,7 +282,7 @@
                             }}>Back to selection</button
                         >
                         <div class="headerContainer">
-                            <p>name xd</p>
+                            <p>Name</p>
                         </div>
                         <div class="songs">
                             {#each selectedPlaylist.items as songs, i}
@@ -312,14 +325,65 @@
             {/if}
         </div>
     </div>
-    
-    <div class="buttons">
-        <!--from start play/pause skip + volume slider-->
-        <button on:click={() => {previousTrack()}}><p>&#171</p></button>
-        <button on:click={() => {stopStartPlayback()}}><p>&#9658</p></button>
-        <button on:click={() => {nextTrack()}}><p>&#187</p></button>
-        <div class="volume and playback">
-            
-        </div>
-    </div>
+       
 </div>
+
+
+ <style lang="scss">
+    * {
+        color: #ffffff;
+        background-color: #000000;
+    }
+
+    
+    div.spotify{
+        
+        padding: 5px;
+        background-color: #000000;
+        max-height: 250px;
+        max-width: 500px;
+        height: 250px;
+        width: 500px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row-reverse;
+
+
+        div.playlist {
+            max-height: 240px;
+
+            justify-self: end;
+            align-self: flex-start;
+            overflow: scroll;
+            img {
+                max-width: 200px;
+
+            }
+        }
+        div.flex{
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: initial;
+
+            div.logo{
+                display: flex;
+                flex-direction: column;
+                align-self: flex-end;
+                justify-self: end;
+                margin-top: 120px;
+                i {
+                    font-weight: 600;
+                    font-size: 12px;
+                    margin-bottom: 2px;
+                }
+
+                img {
+                    width: 100px;
+                }
+                
+            }
+        }
+    }
+ </style>

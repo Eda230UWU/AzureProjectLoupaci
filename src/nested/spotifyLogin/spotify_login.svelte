@@ -17,16 +17,29 @@
         location.assign(url)
 
     }
-    
-    function testCode(){
-        console.log(localStorage.getItem("spotifyCode"))
-
-    }
+        
 
 </script>
 
-<div class="spotify_login">
-    <h1>Spotify Login</h1>
-    <button on:click={() => {spotifyLogin()}}>Login</button>
-    <button on:click={() => {testCode()}}>test</button>
-</div>
+
+    
+<button on:click={() => {spotifyLogin()}}><p> </p></button>
+    <!-- <img src="icon_spotify.png" alt="Spotify" width="22" height="22"> -->
+    
+
+
+<style>
+
+    button {
+        background-image: url("/icon_spotify.png");
+        background-size: 20px;
+        background-position: 50% 0px;
+        background-repeat: no-repeat;
+        background-color: #00000000;
+        height: 40px;
+        width: 80px;
+        margin: 0px;
+        border: 0px;
+
+    }
+</style>

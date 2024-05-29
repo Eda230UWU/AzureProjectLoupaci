@@ -13,11 +13,7 @@
 <div class='flex'>
     <Sidebar/>
     <Spotify/>
-    
-    <div>
-        <p>login</p>
-        <SpotifyLogin/>
-    </div>
+       
 </div>
 
 
@@ -26,7 +22,10 @@
 <style lang="scss">
     div.flex {
         display: flex;
-
+        min-height: 100vh;
+        min-width: 100vw;
+        justify-content: space-between;
     }
+    
     
 </style>

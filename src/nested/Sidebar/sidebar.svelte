@@ -1,52 +1,67 @@
-<script src="https://kit.fontawesome.com/ad29576ac3.js" crossorigin="anonymous"></script>
+<script>
+import SpotifyLogin from '../spotifyLogin/spotify_login.svelte' 
+</script>
+
+
 <nav class="sidebar-navigation">
-    <ul>
-        <li>
-            <img src="Logo.png" alt="Logo">
-            <span class="tooltip">COMMERZBANK</span>
-        </li>
-        <li>
-            <i class="fa-solid fa-list-check"></i>
-            <span class="tooltip">Main</span>
-        </li>
-        <li>
-            <i class="fa-regular fa-calendar"></i>
-            <span class="tooltip">Calendar</span>
-        </li>
-        <li>
-            <i class="fa-solid fa-square-poll-vertical"></i>
-            <span class="tooltip">Graphs</span>
-        </li>
-        <li>
-            <i class="fa-brands fa-spotify"></i>
-            <span class="tooltip">Spotify</span>
-        </li>
-        <li>
-            <i class="fa-solid fa-gear"></i>
-            <span class="tooltip">Settings</span>
-        </li>
-    </ul>
+  <ul class="no-bullets">
+      
+      <li>
+          <a href="index.html">
+              <img src="Logo.png" alt="Logo" width="35" height="30">
+          </a>
+      </li>
+      <li>
+          <a href="">
+            <img src="icon_squares.png" alt="Tasks" width="22" height="22">
+          </a>
+          <span class="tooltip">Tasks</span>
+      </li>
+      <li>
+          <a href="">
+            <img src="icon_calendar.png" alt="Calendar" width="22" height="22">
+          </a>
+          <span class="tooltip">Calendar</span>
+      </li>
+      <li>
+          <a href="">
+            <img src="icon_graph.png" alt="Graphs" width="22" height="22">
+          </a>
+          <span class="tooltip">Graphs</span>
+      </li>
+      <li>
+          
+            <SpotifyLogin/>
+          
+          <span class="tooltip">Spotify</span>
+      </li>
+      <li>
+          <a href="">
+            <img src="icon_sliders.png" alt="Settings" width="22" height="22">
+          </a>
+          <span class="tooltip">Settings</span>
+      </li>
+  </ul>
 </nav>
 
 
 <style lang="scss">
-* {
+/* Sidebar */
+
+li {
+  max-height: 26px;
+  overflow: visible;
+
+}
+ul.no-bullets {
+  list-style-type: none;
   margin: 0;
   padding: 0;
-  list-style: none;
-  font-family: "Lato", sans-serif;
-  line-height: 1;
 }
-
-body {
-  background-color: #F5F6F8;
-//   overflow: hidden;
-}
-
 .sidebar-navigation {
   display: inline-block;
-//   min-height: 100vh;
-height: 100%;
+  min-height: 105vh;
+  /* height: 100%; */
   width: 80px;
   background-color: #002E3C;
   float: left;
@@ -64,6 +79,10 @@ height: 100%;
   display: block;
   font-size: 24px;
   transition: all ease 450ms;
+  color: #FFFF;
+}
+.sidebar-navigation ul li a {
+  text-decoration: none;
 }
 .sidebar-navigation ul li .tooltip {
   display: inline-block;
@@ -90,7 +109,7 @@ height: 100%;
   background-color: inherit;
 }
 .sidebar-navigation ul li:hover {
-  background-color: #22252E;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .sidebar-navigation ul li:hover .tooltip {
   visibility: visible;
@@ -98,10 +117,24 @@ height: 100%;
 }
 .sidebar-navigation ul li.active {
   background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
 }
 .sidebar-navigation ul li.active i {
   color: #98D7EC;
 }
 
-    
+/*@media screen and (max-width: 700px) {
+  .sidebar-navigation {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar-navigation a {
+    text-align: center;
+    float: none;
+  }
+}*/
 </style>
