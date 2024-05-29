@@ -78,7 +78,7 @@
 
             var respBody = JSON.parse(await resp.text());
 
-            console.log(respBody);
+            //console.log(respBody);
         } else {
             alert("bad request data");
         }
@@ -97,7 +97,7 @@
                         authToken.token_type + " " + authToken.access_token,
                 },
             });
-            console.log(resp);
+            // console.log(resp);
             if (resp.status == 204) {
                 console.log("no playback")
             }
@@ -138,11 +138,11 @@
     }
     async function stopStartPlayback(){
         currentPlayback = await getCurrentPlayback()
-        console.log(currentPlayback)
+        // console.log(currentPlayback)
         //if(currentPlayback) if not playing 
         if(currentPlayback.is_playing) {
             if (checkAuth()) {
-            console.log("stop")
+            // console.log("stop")
             var apiUrl = "https://api.spotify.com/v1/me/player/pause"
             var resp = await fetch(apiUrl, {
                 method: "PUT",
@@ -161,7 +161,7 @@
                     "context_uri": currentPlayback.context.uri,
                     //"uris": [currentPlayback.item.uri]
                 })
-            console.log("play")
+            // console.log("play")
             var resp = await fetch(apiUrl, {
                 method: "PUT",
                 headers: {
@@ -175,7 +175,7 @@
             
             
             //console.log()
-            console.log(await resp.text())
+            // console.log(await resp.text())
 
         }
         
@@ -195,7 +195,7 @@
 
             var respBody = JSON.parse(await resp.text());
 
-            console.log(respBody);
+            // console.log(respBody);
         }
 
         if (checkAuth()) {
@@ -205,7 +205,7 @@
                     "context_uri": respBody.items[playlistIndex].uri,
                     //"uris": [currentPlayback.item.uri]
                 })
-            console.log("play songs")
+            //console.log("play songs")
             var respa = await fetch(apiUrl, {
                 method: "PUT",
                 headers: {
@@ -215,7 +215,7 @@
                 body: body
         })}
 
-        console.log(respa)
+        //console.log(respa)
     } 
 
     async function selectPlaylist(data, index) {
@@ -231,12 +231,12 @@
                 },
             });
             var respBody = JSON.parse(await resp.text());
-            console.log(respBody);
+            // console.log(respBody);
         }
 
         selectedPlaylist = respBody;
         playlistSelected = true;
-        console.log(selectedPlaylist);
+        //console.log(selectedPlaylist);
     }
 
     function goBackToPlaylistSelection() {
