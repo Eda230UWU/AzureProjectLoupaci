@@ -17,11 +17,12 @@ async function getTempAccessToken(code) {
     var url = 'https://accounts.spotify.com/api/token' 
     var client_id = "28920abd36f642cab54f4b3f39bd9acb"
     var client_secret = "4e53eddb75fc44c794c2b90319c93086"
+    var redirect_uri =  process.env.NODE_ENV == 'development' ? "http://localhost:5173/onLoginRedirect" : "https://loupaci-test-branch.azurewebsites.net/onLoginRedirect"
     var body = []
     var details = {
         "grant_type": "authorization_code",
         "code": code,
-        "redirect_uri": "http://localhost:5173/onLoginRedirect"
+        "redirect_uri": redirect_uri
     }
 
     for (var property in details) {
