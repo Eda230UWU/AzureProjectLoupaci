@@ -1,28 +1,32 @@
 <script>
-    import Spotify from '../nested/spotify_API/spotify.svelte' 
-    import SpotifyLogin from '../nested/spotify_login/spotify_login.svelte' 
-
+    import Spotify from '../nested/spotifyPlayer/spotify.svelte' 
+    import SpotifyLogin from '../nested/spotifyLogin/spotify_login.svelte' 
+    import Sidebar from "../nested/Sidebar/sidebar.svelte"
     //var isDev = process.env.NODE_ENV == 'development'
-
+    //localStorage.setItem("spotifyScope")
     
 
 
 </script>
 
-<h1>ToDo things</h1>
 
-
-<Spotify/>
-
-<p>login</p>
-<SpotifyLogin/>
-
+<div class='flex'>
+    <Sidebar/>
+    <Spotify/>
+    
+    <div>
+        <p>login</p>
+        <SpotifyLogin/>
+    </div>
+</div>
 
 
 
 
 <style lang="scss">
+    div.flex {
+        display: flex;
 
-
+    }
     
 </style>
