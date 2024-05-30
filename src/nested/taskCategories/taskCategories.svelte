@@ -3,6 +3,7 @@
     import Spotify from "../spotifyPlayer/spotify.svelte"
     import {onMount} from "svelte"
     export let shared
+    export let indexOfArray
 
     var tabs = {
         arr: [{
@@ -41,6 +42,7 @@
         // console.log("skib")
         
         shared = tabs.arr[0]
+        indexOfArray = 0
         loaded = true
         
         
@@ -110,9 +112,9 @@
 
 
     {#if loaded}
-        {#each tabs.arr as tabs}
+        {#each tabs.arr as tabs, i}
             <div class="tabs">
-                <button on:click={() => {shared = tabs}}>{tabs.name}</button>
+                <button on:click={() => {shared = tabs; indexOfArray = i}}>{tabs.name}</button>
                 <p>{tabs.tasks.length}</p>
             </div>
         {/each}  

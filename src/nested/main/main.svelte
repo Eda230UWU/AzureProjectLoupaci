@@ -1,5 +1,7 @@
 <script>
     export let shared;
+    export let indexOfArray
+
     var loaded = false;
     //shared = "notClicked"
     var vec = {
@@ -12,7 +14,7 @@
     };
 
     $: setData(shared);
-
+    
     function setData(shared) {
         if (shared != undefined) {
             vec = shared;
@@ -23,7 +25,35 @@
         }
     }
 
-    function add(){}
+    var addTaskForms = {
+        name: "",
+        description: ""
+    }
+
+    function updateLocalStorage(indexTasks, b){
+        var crazyBuffer = JSON.parse(localStorage.getItem("taskData"))
+        crazyBuffer.arr[indexOfArray] = b
+        localStorage.setItem("taskData",JSON.stringify(crazyBuffer))
+    }
+
+
+    function addTask(i){
+        var buffer = addTaskForms
+        addTaskForms = {
+        name: "",
+        description: ""
+        }
+        vec.tasks[i].taskList.push(buffer)
+        setData(vec)
+        updateLocalStorage(i, vec)
+        
+
+
+
+        loaded = false
+        //console.log("realod")
+        loaded = true
+    }
 
 </script>
 
@@ -33,20 +63,22 @@
         {#if loaded}
             <h1>{vec.name}</h1>
             <div class="flex">
-                {#each vec.tasks as task}
+                {#each vec.tasks as task, i}
                     <div class="taskCollumn">
                         <p>{task.name}</p>
                         <div class="addTask">
-                            <input>
-                            <input>
-                            <input>
-                            <input>
+                            <input bind:value={addTaskForms.name} placeholder="name">
+                            <input bind:value={addTaskForms.description} placeholder="description">
+                            <!-- <input>
+                            <input> -->
                             
-                            <button>AddTask</button>
+                            <button on:click={() => {addTask(i)}}>AddTask</button>
                         </div>
                         {#each task.taskList as eachTask}
                             <div class="tasks">
-                                <p>{eachTask.name}</p>
+                                <h2>{eachTask.name}</h2>
+                                <p>{eachTask.description}</p>
+
                             </div>
                         {/each}
                     </div>

@@ -8,6 +8,7 @@
     //var isDev = process.env.NODE_ENV == 'development'
     //localStorage.setItem("spotifyScope")
     let shared
+    let indexOfArray
 
 
 </script>
@@ -17,10 +18,10 @@
     <div style="width: 580px">
         <Sidebar/>
         <!-- <Spotify/> -->
-        <TaskCategories bind:shared/>
+        <TaskCategories bind:shared bind:indexOfArray/>
     </div>
 
-    <Main bind:shared/>
+    <Main bind:shared bind:indexOfArray/>
 </div>
 
 
