@@ -341,9 +341,9 @@
         padding: 5px;
         background-color: #000000;
         max-height: 250px;
-        max-width: 500px;
+        max-width: 100%;
         height: 250px;
-        width: 500px;
+        //width: 490px;
         overflow: hidden;
         display: flex;
         flex-direction: row-reverse;
