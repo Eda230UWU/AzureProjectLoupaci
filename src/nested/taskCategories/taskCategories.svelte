@@ -28,7 +28,7 @@
     }
     //console.log(tabs)
     
-    var loaded = false
+    export let loaded = false
     onMount(() => {
         
         if(localStorage.getItem("taskData") == "null"){

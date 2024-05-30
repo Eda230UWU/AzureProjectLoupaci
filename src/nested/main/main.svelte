@@ -1,8 +1,8 @@
 <script>
     export let shared;
     export let indexOfArray
-
-    var loaded = false;
+    
+    export let loaded = false;
     //shared = "notClicked"
     var vec = {
         name: "debug",

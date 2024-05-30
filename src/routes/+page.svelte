@@ -9,6 +9,7 @@
     //localStorage.setItem("spotifyScope")
     let shared
     let indexOfArray
+    let loaded = false
 
 
 </script>
@@ -18,10 +19,10 @@
     <div style="width: 580px">
         <Sidebar/>
         <!-- <Spotify/> -->
-        <TaskCategories bind:shared bind:indexOfArray/>
+        <TaskCategories bind:shared bind:indexOfArray bind:loaded/>
     </div>
 
-    <Main bind:shared bind:indexOfArray/>
+    <Main bind:shared bind:indexOfArray bind:loaded/>
 </div>
 
 
