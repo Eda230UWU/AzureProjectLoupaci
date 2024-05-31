@@ -116,6 +116,8 @@
         var dataToExport = localStorage.getItem("taskData");
         console.log(JSON.parse(dataToExport));
         alert(btoa(dataToExport));
+        console.log(btoa(dataToExport));
+        
     };
 
     function update() {
