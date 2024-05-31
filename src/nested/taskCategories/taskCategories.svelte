@@ -154,9 +154,9 @@
     
 
 
-    <!-- <div class="spotify">
+    <div class="spotify">
         <Spotify/>  
-    </div> -->
+    </div>
 </div>
 
 <style lang="scss">
@@ -190,6 +190,7 @@
 
     div.white {
         display: flex;
+        overflow: scroll;
         flex-direction: column;
         background-color: #ffffff;
         max-width: 500px;
