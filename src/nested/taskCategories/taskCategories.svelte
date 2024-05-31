@@ -154,9 +154,9 @@
     
 
 
-    <div class="spotify">
+    <!-- <div class="spotify">
         <Spotify/>  
-    </div>
+    </div> -->
 </div>
 
 <style lang="scss">
