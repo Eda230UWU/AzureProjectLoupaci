@@ -60,7 +60,7 @@ ul.no-bullets {
 }
 .sidebar-navigation {
   display: inline-block;
-  min-height: 105vh;
+  min-height: 100vh;
   /* height: 100%; */
   width: 80px;
   background-color: #002E3C;

@@ -347,6 +347,8 @@
         overflow: hidden;
         display: flex;
         flex-direction: row-reverse;
+        border-radius: 15px;
+        
 
 
         div.playlist {
